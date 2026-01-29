@@ -3,35 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E01000001 /* FishingLineMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000001; };
-		E01000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000002; };
-		E01000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00000003; };
-		E01000004 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000004; };
-		E01000005 /* LineChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000005; };
-		E01000006 /* FishingRod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000006; };
-		E01000007 /* FishingTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000007; };
-		E01000008 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000008; };
-		E01000009 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000009; };
-		E01000010 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000010; };
-		E01000011 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000011; };
-		E01000012 /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000012; };
-		E01000013 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000013; };
-		E01000014 /* RodIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000014; };
-		E01000015 /* RodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000015; };
-		E01000016 /* RodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000016; };
-		E01000017 /* RodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000017; };
-		E01000018 /* AddRodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000018; };
-		E01000019 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000019; };
-		E01000020 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000020; };
-		E01000021 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000021; };
-		E01000022 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000022; };
-		E01000023 /* KnowledgeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000023; };
-		E01000024 /* TripHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000025; };
-		E01000026 /* AdaptiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000026; };
+		E01000001 /* FishingLineMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000001 /* FishingLineMemoryApp.swift */; };
+		E01000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000002 /* ContentView.swift */; };
+		E01000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E00000003 /* Assets.xcassets */; };
+		E01000004 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000004 /* LineType.swift */; };
+		E01000005 /* LineChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000005 /* LineChange.swift */; };
+		E01000006 /* FishingRod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000006 /* FishingRod.swift */; };
+		E01000007 /* FishingTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000007 /* FishingTrip.swift */; };
+		E01000008 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000008 /* AppTheme.swift */; };
+		E01000009 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000009 /* DataManager.swift */; };
+		E01000010 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000010 /* Extensions.swift */; };
+		E01000011 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000011 /* ProgressBarView.swift */; };
+		E01000012 /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000012 /* StatusBadgeView.swift */; };
+		E01000013 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000013 /* CustomButtonView.swift */; };
+		E01000014 /* RodIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000014 /* RodIconView.swift */; };
+		E01000015 /* RodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000015 /* RodCardView.swift */; };
+		E01000016 /* RodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000016 /* RodListView.swift */; };
+		E01000017 /* RodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000017 /* RodDetailView.swift */; };
+		E01000018 /* AddRodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000018 /* AddRodView.swift */; };
+		E01000019 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000019 /* AddTripView.swift */; };
+		E01000020 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000020 /* RemindersView.swift */; };
+		E01000021 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000021 /* StatisticsView.swift */; };
+		E01000022 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000022 /* SettingsView.swift */; };
+		E01000023 /* KnowledgeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000023 /* KnowledgeBaseView.swift */; };
+		E01000024 /* TripHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000025 /* TripHistoryView.swift */; };
+		E01000026 /* AdaptiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000026 /* AdaptiveSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -489,9 +489,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -522,9 +524,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
