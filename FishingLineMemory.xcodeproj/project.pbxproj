@@ -30,6 +30,8 @@
 		E01000021 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000021; };
 		E01000022 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000022; };
 		E01000023 /* KnowledgeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000023; };
+		E01000024 /* TripHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000025; };
+		E01000026 /* AdaptiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000026; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +59,9 @@
 		E00000022 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E00000023 /* KnowledgeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseView.swift; sourceTree = "<group>"; };
 		E00000024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E00000100 /* FishingLineMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingLineMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E00000025 /* TripHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryView.swift; sourceTree = "<group>"; };
+		E00000026 /* AdaptiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveSheet.swift; sourceTree = "<group>"; };
+		E00000100 /* FishingLineMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingLineMemory.app; sourceTree = BUILT_PRODUCTS_DIR; }; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 				E03000011 /* RodDetail */,
 				E03000012 /* AddRod */,
 				E03000013 /* AddTrip */,
+				E03000018 /* TripHistory */,
 				E03000014 /* Reminders */,
 				E03000015 /* Statistics */,
 				E03000016 /* Settings */,
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				E00000010 /* Extensions.swift */,
+				E00000026 /* AdaptiveSheet.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -228,6 +234,14 @@
 				E00000023 /* KnowledgeBaseView.swift */,
 			);
 			path = KnowledgeBase;
+			sourceTree = "<group>";
+		};
+		E03000018 /* TripHistory */ = {
+			isa = PBXGroup;
+			children = (
+				E00000025 /* TripHistoryView.swift */,
+			);
+			path = TripHistory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +335,8 @@
 				E01000021 /* StatisticsView.swift in Sources */,
 				E01000022 /* SettingsView.swift in Sources */,
 				E01000023 /* KnowledgeBaseView.swift in Sources */,
+				E01000024 /* TripHistoryView.swift in Sources */,
+				E01000026 /* AdaptiveSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

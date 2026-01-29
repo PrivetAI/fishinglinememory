@@ -66,15 +66,15 @@ struct RodDetailView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .sheet(isPresented: $showingChangeLineSheet) {
+        .adaptiveSheet(isPresented: $showingChangeLineSheet) {
             ChangeLineSheet(rod: currentRod)
                 .environmentObject(dataManager)
         }
-        .sheet(isPresented: $showingAddTripSheet) {
+        .adaptiveSheet(isPresented: $showingAddTripSheet) {
             AddTripView(preselectedRodId: rod.id)
                 .environmentObject(dataManager)
         }
-        .sheet(isPresented: $showingEditSheet) {
+        .adaptiveSheet(isPresented: $showingEditSheet) {
             AddRodView(editingRod: currentRod)
                 .environmentObject(dataManager)
         }

@@ -33,7 +33,7 @@ struct RemindersView: View {
                 }
             }
             .navigationBarHidden(true)
-            .sheet(item: $selectedRod) { rod in
+            .adaptiveSheet(item: $selectedRod) { rod in
                 RodDetailView(rod: rod)
                     .environmentObject(dataManager)
             }

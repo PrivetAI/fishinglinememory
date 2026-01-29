@@ -44,12 +44,12 @@ struct RodListView: View {
                     .padding(.vertical, 16)
                 }
             }
-            .navigationBarHidden(true)
-            .sheet(isPresented: $showingAddRod) {
+        .navigationBarHidden(true)
+            .adaptiveSheet(isPresented: $showingAddRod) {
                 AddRodView()
                     .environmentObject(dataManager)
             }
-            .sheet(item: $selectedRod) { rod in
+            .adaptiveSheet(item: $selectedRod) { rod in
                 RodDetailView(rod: rod)
                     .environmentObject(dataManager)
             }

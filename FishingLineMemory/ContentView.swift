@@ -15,14 +15,23 @@ struct ContentView: View {
                 }
                 .tag(0)
             
+            TripHistoryView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "figure.fishing")
+                        Text("Trips")
+                    }
+                }
+                .tag(1)
+            
             RemindersView()
                 .tabItem {
                     VStack {
                         Image(systemName: "bell")
-                        Text("Reminders")
+                        Text("Alerts")
                     }
                 }
-                .tag(1)
+                .tag(2)
             
             StatisticsView()
                 .tabItem {
@@ -31,7 +40,7 @@ struct ContentView: View {
                         Text("Stats")
                     }
                 }
-                .tag(2)
+                .tag(3)
             
             SettingsView()
                 .tabItem {
@@ -40,7 +49,7 @@ struct ContentView: View {
                         Text("Settings")
                     }
                 }
-                .tag(3)
+                .tag(4)
         }
         .accentColor(AppTheme.primary)
         .environmentObject(dataManager)
