@@ -389,16 +389,14 @@ struct BestForCard: View {
                     .foregroundColor(AppTheme.textPrimary)
             }
             
-            FlowLayout(spacing: 8) {
-                ForEach(bestFor, id: \.self) { use in
-                    Text(use)
-                        .font(.system(size: 12))
-                        .foregroundColor(AppTheme.textSecondary)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .background(color.opacity(0.15))
-                        .cornerRadius(12)
-                }
+            WrappingHStack(items: bestFor, spacing: 8, color: color) { use in
+                Text(use)
+                    .font(.system(size: 12))
+                    .foregroundColor(AppTheme.textSecondary)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(color.opacity(0.15))
+                    .cornerRadius(12)
             }
         }
         .padding(16)
@@ -408,48 +406,38 @@ struct BestForCard: View {
     }
 }
 
-// MARK: - Flow Layout
+// MARK: - Wrapping HStack (iOS 15.6 compatible)
 
-struct FlowLayout: Layout {
-    var spacing: CGFloat = 8
+struct WrappingHStack<Content: View>: View {
+    let items: [String]
+    let spacing: CGFloat
+    let color: Color
+    let content: (String) -> Content
     
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-        let result = FlowResult(in: proposal.width ?? 0, subviews: subviews, spacing: spacing)
-        return result.size
+    init(items: [String], spacing: CGFloat = 8, color: Color, @ViewBuilder content: @escaping (String) -> Content) {
+        self.items = items
+        self.spacing = spacing
+        self.color = color
+        self.content = content
     }
     
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        let result = FlowResult(in: bounds.width, subviews: subviews, spacing: spacing)
-        for (index, frame) in result.frames.enumerated() {
-            subviews[index].place(at: CGPoint(x: bounds.minX + frame.origin.x, y: bounds.minY + frame.origin.y), proposal: .init(frame.size))
+    var body: some View {
+        VStack(alignment: .leading, spacing: spacing) {
+            ForEach(Array(items.chunked(into: 2).enumerated()), id: \.offset) { _, row in
+                HStack(spacing: spacing) {
+                    ForEach(row, id: \.self) { item in
+                        content(item)
+                    }
+                }
+            }
         }
     }
-    
-    struct FlowResult {
-        var size: CGSize = .zero
-        var frames: [CGRect] = []
-        
-        init(in maxWidth: CGFloat, subviews: Subviews, spacing: CGFloat) {
-            var x: CGFloat = 0
-            var y: CGFloat = 0
-            var rowHeight: CGFloat = 0
-            
-            for subview in subviews {
-                let size = subview.sizeThatFits(.unspecified)
-                
-                if x + size.width > maxWidth && x > 0 {
-                    x = 0
-                    y += rowHeight + spacing
-                    rowHeight = 0
-                }
-                
-                frames.append(CGRect(origin: CGPoint(x: x, y: y), size: size))
-                
-                x += size.width + spacing
-                rowHeight = max(rowHeight, size.height)
-            }
-            
-            self.size = CGSize(width: maxWidth, height: y + rowHeight)
+}
+
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
         }
     }
 }
