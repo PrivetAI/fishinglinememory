@@ -42,6 +42,15 @@ struct ContentView: View {
                 }
                 .tag(3)
             
+            ToolsView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "wrench.and.screwdriver")
+                        Text("Tools")
+                    }
+                }
+                .tag(4)
+            
             SettingsView()
                 .tabItem {
                     VStack {
@@ -49,7 +58,7 @@ struct ContentView: View {
                         Text("Settings")
                     }
                 }
-                .tag(4)
+                .tag(5)
         }
         .accentColor(AppTheme.primary)
         .environmentObject(dataManager)
