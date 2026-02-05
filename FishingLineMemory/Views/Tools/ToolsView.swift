@@ -8,9 +8,6 @@ struct ToolsView: View {
                 
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Header
-                        headerView
-                        
                         // Tools grid
                         toolsSection
                     }
@@ -18,19 +15,10 @@ struct ToolsView: View {
                     .padding(.vertical, 16)
                 }
             }
-            .navigationBarHidden(true)
+            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("Tools")
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    private var headerView: some View {
-        HStack {
-            Text("Tools")
-                .font(.system(size: 28, weight: .bold))
-                .foregroundColor(AppTheme.textPrimary)
-            
-            Spacer()
-        }
     }
     
     private var toolsSection: some View {
