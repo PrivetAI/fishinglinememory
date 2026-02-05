@@ -24,24 +24,6 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            RemindersView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "bell")
-                        Text("Alerts")
-                    }
-                }
-                .tag(2)
-            
-            StatisticsView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "chart.bar")
-                        Text("Stats")
-                    }
-                }
-                .tag(3)
-            
             ToolsView()
                 .tabItem {
                     VStack {
@@ -49,7 +31,16 @@ struct ContentView: View {
                         Text("Tools")
                     }
                 }
-                .tag(4)
+                .tag(2)
+            
+            RemindersView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "bell")
+                        Text("Alerts")
+                    }
+                }
+                .tag(3)
             
             SettingsView()
                 .tabItem {
@@ -58,7 +49,7 @@ struct ContentView: View {
                         Text("Settings")
                     }
                 }
-                .tag(5)
+                .tag(4)
         }
         .accentColor(AppTheme.primary)
         .environmentObject(dataManager)

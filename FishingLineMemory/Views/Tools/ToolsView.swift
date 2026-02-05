@@ -8,17 +8,78 @@ struct ToolsView: View {
                 
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Tools grid
+                        // Header
+                        headerView
+                        
+                        // Statistics card first
+                        statisticsCard
+                        
+                        // Tools section
+                        toolsHeader
                         toolsSection
                     }
                     .adaptivePadding()
                     .padding(.vertical, 16)
                 }
             }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationTitle("Tools")
+            .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    private var headerView: some View {
+        HStack {
+            Text("Tools & Stats")
+                .font(.system(size: 28, weight: .bold))
+                .foregroundColor(AppTheme.textPrimary)
+            
+            Spacer()
+        }
+    }
+    
+    private var statisticsCard: some View {
+        NavigationLink(destination: StatisticsView()) {
+            HStack(spacing: 16) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(hex: "9D4EDD").opacity(0.2))
+                        .frame(width: 60, height: 60)
+                    
+                    Image(systemName: "chart.bar.fill")
+                        .font(.system(size: 26))
+                        .foregroundColor(Color(hex: "9D4EDD"))
+                }
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Statistics")
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundColor(AppTheme.textPrimary)
+                    
+                    Text("View your fishing activity and line change stats")
+                        .font(.system(size: 14))
+                        .foregroundColor(AppTheme.textSecondary)
+                        .lineLimit(2)
+                }
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14))
+                    .foregroundColor(AppTheme.textMuted)
+            }
+            .padding(16)
+            .background(AppTheme.cardBackground)
+            .cornerRadius(AppTheme.cornerRadiusMedium)
+        }
+    }
+    
+    private var toolsHeader: some View {
+        HStack {
+            Text("FISHING TOOLS")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundColor(AppTheme.textMuted)
+            Spacer()
+        }
     }
     
     private var toolsSection: some View {
