@@ -4,7 +4,7 @@ import SwiftUI
 struct FishingLineMemoryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StageResultView()
                 .preferredColorScheme(.dark)
         }
     }
