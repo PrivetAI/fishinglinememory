@@ -36,6 +36,11 @@
 		E01000028 /* KnotsGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000028 /* KnotsGuideView.swift */; };
 		E01000029 /* SpoolCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000029 /* SpoolCalculatorView.swift */; };
 		E01000030 /* LineComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000030 /* LineComparisonView.swift */; };
+		E01000031 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000031 /* NetworkManager.swift */; };
+		E01000032 /* StageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000032 /* StageViewModel.swift */; };
+		E01000033 /* StageViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000033 /* StageViewRepresentable.swift */; };
+		E01000034 /* StageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000034 /* StageView.swift */; };
+		E01000035 /* StageResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000035 /* StageResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +75,12 @@
 		E00000029 /* SpoolCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoolCalculatorView.swift; sourceTree = "<group>"; };
 		E00000030 /* LineComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineComparisonView.swift; sourceTree = "<group>"; };
 		E00000100 /* FishingLineMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingLineMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E00000031 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E00000032 /* StageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewModel.swift; sourceTree = "<group>"; };
+		E00000033 /* StageViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewRepresentable.swift; sourceTree = "<group>"; };
+		E00000034 /* StageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageView.swift; sourceTree = "<group>"; };
+		E00000035 /* StageResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageResultView.swift; sourceTree = "<group>"; };
+		E00000036 /* FishingLineMemory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FishingLineMemory.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +108,14 @@
 				E00000001 /* FishingLineMemoryApp.swift */,
 				E00000002 /* ContentView.swift */,
 				E00000024 /* Info.plist */,
+				E00000036 /* FishingLineMemory.entitlements */,
 				E00000003 /* Assets.xcassets */,
 				E03000004 /* Models */,
 				E03000005 /* ViewModels */,
 				E03000006 /* Theme */,
 				E03000007 /* Views */,
 				E03000008 /* Utils */,
+				E03000023 /* Managers */,
 			);
 			path = FishingLineMemory;
 			sourceTree = "<group>";
@@ -130,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				E00000009 /* DataManager.swift */,
+				E00000032 /* StageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -159,6 +173,9 @@
 				E03000020 /* KnotsGuide */,
 				E03000021 /* SpoolCalculator */,
 				E03000022 /* LineComparison */,
+				E00000033 /* StageViewRepresentable.swift */,
+				E00000034 /* StageView.swift */,
+				E00000035 /* StageResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,6 +305,14 @@
 			path = LineComparison;
 			sourceTree = "<group>";
 		};
+		E03000023 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E00000031 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -385,6 +410,11 @@
 				E01000028 /* KnotsGuideView.swift in Sources */,
 				E01000029 /* SpoolCalculatorView.swift in Sources */,
 				E01000030 /* LineComparisonView.swift in Sources */,
+				E01000031 /* NetworkManager.swift in Sources */,
+				E01000032 /* StageViewModel.swift in Sources */,
+				E01000033 /* StageViewRepresentable.swift in Sources */,
+				E01000034 /* StageView.swift in Sources */,
+				E01000035 /* StageResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FishingLineMemory/FishingLineMemory.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
