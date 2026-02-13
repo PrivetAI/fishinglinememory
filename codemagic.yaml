@@ -31,13 +31,19 @@ workflows:
       - name: Archive
         script: |
           xcodebuild archive \
-            -project "$CM_BUILD_DIR/$XCODE_PROJECT" \
+            -project "$CM_BUILD_DIR/FishingLineMemory.xcodeproj" \
             -scheme "$XCODE_SCHEME" \
+            -sdk iphoneos \
             -destination 'generic/platform=iOS' \
             -archivePath build/ios/archive/FishingLineMemory.xcarchive \
             CODE_SIGN_STYLE=Manual \
-            -verbose > archive_verbose.log 2>&1
+            -verbose > ~/archive_verbose.log 2>&1 || true  # не останавливай билд сразу
 
+          echo "=== Last 300 lines of verbose log ==="
+          tail -n 300 ~/archive_verbose.log
+
+          echo "=== Grep errors from log ==="
+          grep -i -C 10 "error\|fail\|codesign\|provision\|entitle\|bundle\|identity\|certificate\|profile\|mismatch\|65" ~/archive_verbose.log || echo "No errors found in grep"
       - name: Export IPA
         script: |
           xcodebuild -exportArchive \
