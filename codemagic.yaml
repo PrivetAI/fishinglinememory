@@ -11,33 +11,46 @@ workflows:
         bundle_identifier: com.codymurray.fishinglinememory
       vars:
         BUNDLE_ID: "com.codymurray.fishinglinememory"
-        XCODE_WORKSPACE: "FishingLineMemory.xcodeproj"
+        XCODE_PROJECT: "FishingLineMemory.xcodeproj"  # было WORKSPACE, но у тебя project
         XCODE_SCHEME: "FishingLineMemory"
         APP_STORE_APPLE_ID: 6758609829
       xcode: latest 
       cocoapods: default
     scripts:
-      - name: Set up provisioning profiles settings on Xcode project
-        script: xcode-project use-profiles
-      - name: Check build settings
+      - name: Pod install (если есть Pods)
         script: |
-          xcodebuild -project "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+          cd $CM_BUILD_DIR
+          pod install --repo-update || true  # на всякий
+
+      - name: Check build settings (для дебага)
+        script: |
+          xcodebuild -project "$CM_BUILD_DIR/$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
-            -showBuildSettings | grep -iE "CODE_SIGN|PROVISIONING|DEVELOPMENT_TEAM|INFOPLIST|ENTITLEMENTS"
-      - name: Build ipa for distribution
+            -showBuildSettings | grep -iE "CODE_SIGN|PROVISIONING|DEVELOPMENT_TEAM|INFOPLIST|ENTITLEMENTS|BUNDLE_IDENTIFIER"
+
+      - name: Archive
         script: |
-          xcode-project build-ipa \
-            --project "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
-            --scheme "$XCODE_SCHEME" \
-            --archive-flags "-destination 'generic/platform=iOS' -verbose"
+          xcodebuild archive \
+            -project "$CM_BUILD_DIR/$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/ios/archive/FishingLineMemory.xcarchive \
+            CODE_SIGN_STYLE=Manual \
+            -verbose > archive_verbose.log 2>&1
+
+      - name: Export IPA
+        script: |
+          xcodebuild -exportArchive \
+            -archivePath build/ios/archive/FishingLineMemory.xcarchive \
+            -exportOptionsPlist export_options.plist \
+            -exportPath build/ios/ipa
+
     artifacts:
       - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+      - build/ios/archive/*.xcarchive
+      - archive_verbose.log  # ключевой! скачаешь после фейла
       - $HOME/Library/Developer/Xcode/DerivedData/**/Logs/*.log
-      - ~/Library/Logs/DiagnosticReports/*.crash
-      - $CM_BUILD_DIR/build/ios/archive/*.xcarchive
+
     publishing:
       app_store_connect:
         auth: integration
