@@ -19,16 +19,25 @@ workflows:
     scripts:
       - name: Set up provisioning profiles settings on Xcode project
         script: xcode-project use-profiles
+      - name: Check build settings
+        script: |
+          xcodebuild -project "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+            -scheme "$XCODE_SCHEME" \
+            -showBuildSettings | grep -iE "CODE_SIGN|PROVISIONING|DEVELOPMENT_TEAM|INFOPLIST|ENTITLEMENTS"
       - name: Build ipa for distribution
         script: |
           xcode-project build-ipa \
             --project "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
-            --scheme "$XCODE_SCHEME"
+            --scheme "$XCODE_SCHEME" \
+            --archive-flags "-destination 'generic/platform=iOS' -verbose"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Logs/*.log
+      - ~/Library/Logs/DiagnosticReports/*.crash
+      - $CM_BUILD_DIR/build/ios/archive/*.xcarchive
     publishing:
       app_store_connect:
         auth: integration
