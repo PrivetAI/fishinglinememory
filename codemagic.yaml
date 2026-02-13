@@ -37,13 +37,17 @@ workflows:
             -destination 'generic/platform=iOS' \
             -archivePath build/ios/archive/FishingLineMemory.xcarchive \
             CODE_SIGN_STYLE=Manual \
-            -verbose > ~/archive_verbose.log 2>&1 || true  # не останавливай билд сразу
+            -verbose > ~/archive_verbose.log 2>&1 || true  # продолжи билд даже при fail
+  
+          echo "=== Tail verbose log (last 400 lines) ==="
+          tail -n 400 ~/archive_verbose.log
 
-          echo "=== Last 300 lines of verbose log ==="
-          tail -n 300 ~/archive_verbose.log
+          echo "=== Grep potential errors ==="
+          grep -i -C 15 "error\|fail\|codesign\|provision\|entitle\|bundle\|identity\|certificate\|profile\|mismatch\|team\|65" ~/archive_verbose.log ||echo "No grep matches — log too short or no error keyword"
 
-          echo "=== Grep errors from log ==="
-          grep -i -C 10 "error\|fail\|codesign\|provision\|entitle\|bundle\|identity\|certificate\|profile\|mismatch\|65" ~/archive_verbose.log || echo "No errors found in grep"
+          echo "=== Check imported profile entitlements ==="
+          security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision | grep -A 20 "<key>Entitlements</key>" || echo "No profile or no entitlements"
+      
       - name: Export IPA
         script: |
           xcodebuild -exportArchive \
